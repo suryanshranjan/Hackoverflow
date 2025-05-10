@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // Start with the splash screen, which will handle navigation to role selection
-      home: PatientHomePage(),
+      home: SplashScreen(),
     );
   }
 }
