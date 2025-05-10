@@ -25,7 +25,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private USER_ROLE role;
-
+private String speciality;
 private Address address;
 
 }

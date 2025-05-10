@@ -11,9 +11,9 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Doctor doctor;
+    private User doctor;
     @ManyToOne
-    private Patient patient;
+    private User patient;
 
     private LocalDateTime startTime;
     private LocalDateTime EndTime;

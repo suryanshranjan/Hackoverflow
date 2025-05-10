@@ -1,7 +1,6 @@
 package com.example.Hack.Overflow.Service;
 
 import com.example.Hack.Overflow.Model.Appointment;
-import com.example.Hack.Overflow.Model.Doctor;
 import com.example.Hack.Overflow.Model.User;
 import com.example.Hack.Overflow.Repo.Appointmentrepo;
 import com.example.Hack.Overflow.Repo.UserRepository;
@@ -22,7 +21,16 @@ private UserRepository userrepo;
 
     @Override
     public Appointment createAppointment(AppointmentRequest appointment) {
-        return null;
+        Optional<User> patient=userrepo.findById(appointment.getPatientId());
+        Optional<User> doct=userrepo.findById(appointment.getDoctorId());
+    Appointment appoint=new Appointment();
+    appoint.setPatient(patient.get());
+    appoint.setDoctor(doct.get());
+    appoint.setEndTime(appointment.getEndTime());
+    appoint.setStartTime(appointment.getStartTime());
+    appoint.setStatus(true);
+    appointrepo.save(appoint);
+    return appoint;
     }
 
     @Override
