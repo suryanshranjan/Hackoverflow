@@ -16,16 +16,16 @@ class RequestAppointmentPage extends StatelessWidget {
             'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvczc3LW1ja2luc2V5LTc2MTEtcG9tXzMuanBn.jpg',
       },
       {
-        'name': 'Alice Johnson',
-        'reason': 'Chest Pain Consultation',
-        'requestedTime': 'Today, 4:30 PM',
+        'name': 'Bob Smith',
+        'reason': 'Heart Checkup',
+        'requestedTime': 'Tomorrow, 10:00 AM',
         'imageUrl':
             'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvczc3LW1ja2luc2V5LTc2MTEtcG9tXzMuanBn.jpg',
       },
       {
-        'name': 'Alice Johnson',
-        'reason': 'Chest Pain Consultation',
-        'requestedTime': 'Today, 4:30 PM',
+        'name': 'Charlie Brown',
+        'reason': 'General Checkup',
+        'requestedTime': 'Tomorrow, 12:00 PM',
         'imageUrl':
             'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvczc3LW1ja2luc2V5LTc2MTEtcG9tXzMuanBn.jpg',
       }
@@ -44,7 +44,7 @@ class RequestAppointmentPage extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return  Center(child: Text('No requests available.'));
+            return const Center(child: Text('No requests available.'));
           }
 
           final requests = snapshot.data!;
@@ -54,12 +54,13 @@ class RequestAppointmentPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 Text(
                   'Incoming Appointment Requests',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
+                    color: Colors.black87,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -68,17 +69,20 @@ class RequestAppointmentPage extends StatelessWidget {
                     itemCount: requests.length,
                     itemBuilder: (context, index) {
                       final request = requests[index];
-                      return RequestCard(
-                        name: request['name']!,
-                        reason: request['reason']!,
-                        requestedTime: request['requestedTime']!,
-                        imageUrl: request['imageUrl']!,
-                        onAccept: () {
-                          // Handle accept action
-                        },
-                        onReject: () {
-                          // Handle reject action
-                        },
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: RequestCard(
+                          name: request['name']!,
+                          reason: request['reason']!,
+                          requestedTime: request['requestedTime']!,
+                          imageUrl: request['imageUrl']!,
+                          onAccept: () {
+                            // Handle accept action
+                          },
+                          onReject: () {
+                            // Handle reject action
+                          },
+                        ),
                       );
                     },
                   ),

@@ -81,52 +81,53 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
 
   // Body of the Doctor Dashboard, changing based on selected index
   // Body of the Doctor Dashboard, changing based on selected index
-Widget _buildBody() {
-  switch (_selectedIndex) {
-    case 0:
-      return SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildHeader(),
-            const TilesSection(),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16), // Added padding
-              child: Text(
-                'Upcoming Appointments',
-                style: TextStyle(
-                  fontSize: 20, // Slightly larger for emphasis
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black87,
-                  letterSpacing: 1, // Adds a bit of spacing between the letters
-                  height: 1.4, // Adjust line height for better spacing
+  Widget _buildBody() {
+    switch (_selectedIndex) {
+      case 0:
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(),
+              const TilesSection(),
+              const SizedBox(height: 8),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16), // Added padding
+                child: Text(
+                  'Upcoming Appointments',
+                  style: TextStyle(
+                    fontSize: 20, // Slightly larger for emphasis
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                    letterSpacing:
+                        1, // Adds a bit of spacing between the letters
+                    height: 1.4, // Adjust line height for better spacing
+                  ),
                 ),
               ),
-            ),
-            _buildAppointmentsList(),
-          ],
-        ),
-      );
-    case 1:
-      return RequestAppointmentPage();
-    case 2:
-      return Center(child: Text("Patients screen coming soon..."));
-    case 3:
-      return ProfilePage();
-    case 4:
-      return Center(child: Text("Notifications screen coming soon..."));
-    default:
-      return const SizedBox();
+              _buildAppointmentsList(),
+            ],
+          ),
+        );
+      case 1:
+        return RequestAppointmentPage();
+      case 2:
+        return Center(child: Text("Patients screen coming soon..."));
+      case 3:
+        return ProfilePage();
+      case 4:
+        return Center(child: Text("Notifications screen coming soon..."));
+      default:
+        return const SizedBox();
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB), // Light background color
-      body: SafeArea(child: _buildBody()), // Ensure body is inside safe area
+      backgroundColor: const Color(0xFFF9FAFB),
+      body: SafeArea(child: _buildBody()),
       bottomNavigationBar: BottomNavBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
