@@ -44,7 +44,7 @@ class RequestAppointmentPage extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No requests available.'));
+            return  Center(child: Text('No requests available.'));
           }
 
           final requests = snapshot.data!;
@@ -55,7 +55,7 @@ class RequestAppointmentPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 40),
-                const Text(
+                Text(
                   'Incoming Appointment Requests',
                   style: TextStyle(
                     fontSize: 20,

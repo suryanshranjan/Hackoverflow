@@ -9,26 +9,33 @@ class ProfileGreeting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Row(
           children: [
-            CircleAvatar(
-              radius: 30,
+            const CircleAvatar(
+              radius: 32,
               backgroundImage: AssetImage('assets/doctor.webp'),
               backgroundColor: Colors.transparent,
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 14),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Hi, Welcome Back,',
-                  style: TextStyle(fontSize: 14, color: Colors.grey),
+                 Text(
+                  'Hi, Welcome Back 👋',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.white70,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
+                const SizedBox(height: 4),
                 Text(
                   doctorName,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -36,27 +43,7 @@ class ProfileGreeting extends StatelessWidget {
             ),
           ],
         ),
-        Stack(
-          clipBehavior: Clip.none,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.notifications_outlined),
-              onPressed: () {},
-            ),
-            Positioned(
-              right: 0,
-              top: 0,
-              child: Container(
-                width: 8,
-                height: 8,
-                decoration: const BoxDecoration(
-                  color: Colors.red,
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ],
-        ),
+        // Remove the notifications part here
       ],
     );
   }

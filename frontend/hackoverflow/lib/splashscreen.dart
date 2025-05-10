@@ -377,7 +377,7 @@ class SecondFrame extends StatelessWidget {
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
-                          children: const [
+                          children: [
                             Icon(Icons.healing),
                             SizedBox(width: 8),
                             Text('Get Started', style: TextStyle(fontSize: 16)),

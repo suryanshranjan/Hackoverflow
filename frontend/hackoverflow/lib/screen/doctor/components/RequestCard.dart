@@ -62,7 +62,7 @@ class RequestCard extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: onAccept,
-                      child: const Text("Accept"),
+                      child:  Text("Accept"),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.teal,
                         foregroundColor: Colors.white,
@@ -72,7 +72,7 @@ class RequestCard extends StatelessWidget {
                     const SizedBox(width: 8),
                     OutlinedButton(
                       onPressed: onReject,
-                      child: const Text("Reject"),
+                      child:  Text("Reject"),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Colors.red,
                         side: const BorderSide(color: Colors.red),

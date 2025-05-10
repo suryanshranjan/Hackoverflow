@@ -26,8 +26,8 @@ class AppointmentCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 8,
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 12,
             offset: const Offset(0, 4),
           ),
         ],
@@ -47,8 +47,8 @@ class AppointmentCard extends StatelessWidget {
                 Text(
                   name,
                   style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
                     color: Colors.teal[800],
                   ),
                 ),
@@ -57,14 +57,15 @@ class AppointmentCard extends StatelessWidget {
                   specialty,
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.grey[600],
+                    color: Colors.grey[700],
+                    fontStyle: FontStyle.italic,
                   ),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 8),
                 Row(
                   children: [
                     Icon(Icons.access_time_rounded,
-                        size: 16, color: Colors.grey[500]),
+                        size: 16, color: Colors.grey[600]),
                     const SizedBox(width: 4),
                     Text(
                       time,
@@ -81,13 +82,13 @@ class AppointmentCard extends StatelessWidget {
           ElevatedButton(
             onPressed: onViewPressed ?? () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.teal[50],
-              foregroundColor: Colors.teal[700],
+              backgroundColor: Colors.blue, // Blue color for the button
+              foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
-              elevation: 0,
+              elevation: 2,
             ),
             child: const Text(
               'View',

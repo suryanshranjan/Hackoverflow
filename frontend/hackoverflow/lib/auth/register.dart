@@ -162,7 +162,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 30),
 
                   // Sign Up Text
-                  const Text(
+                   Text(
                     'Sign Up',
                     style: TextStyle(
                       fontSize: 24,
@@ -173,7 +173,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 8),
 
                   // Description Text
-                  const Text(
+                   Text(
                     "Fill in your details to create your account.",
                     style: TextStyle(
                       fontSize: 14,
@@ -183,7 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 30),
 
                   // Full Name Label
-                  const Text(
+                   Text(
                     'Full Name',
                     style: TextStyle(
                       fontSize: 16,
@@ -207,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
 
                   // Email Label
-                  const Text(
+                   Text(
                     'Email',
                     style: TextStyle(
                       fontSize: 16,
@@ -236,7 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
 
                   // Password Label
-                  const Text(
+                  Text(
                     'Password',
                     style: TextStyle(
                       fontSize: 16,
@@ -280,7 +280,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
 
                   // Confirm Password Label
-                  const Text(
+                   Text(
                     'Confirm Password',
                     style: TextStyle(
                       fontSize: 16,
@@ -326,7 +326,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 20),
 
                   // Mobile Number Label
-                  const Text(
+                   Text(
                     'Mobile Number',
                     style: TextStyle(
                       fontSize: 16,
@@ -353,7 +353,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   // Role-specific fields
                   if (widget.role == 'patient') ...[
                     // Age Label
-                    const Text(
+                     Text(
                       'Age',
                       style: TextStyle(
                         fontSize: 16,
@@ -381,7 +381,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 20),
 
                     // Gender Label
-                    const Text(
+                     Text(
                       'Gender',
                       style: TextStyle(
                         fontSize: 16,
@@ -421,7 +421,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ] else if (widget.role == 'doctor') ...[
                     // Speciality Label
-                    const Text(
+                     Text(
                       'Speciality',
                       style: TextStyle(
                         fontSize: 16,
@@ -485,7 +485,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 strokeWidth: 2,
                               ),
                             )
-                          : const Text(
+                          :  Text(
                               'Sign Up',
                               style: TextStyle(
                                 fontSize: 18,
@@ -578,7 +578,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             minimumSize: const Size(50, 30),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
-                          child: const Text(
+                          child:  Text(
                             'Sign In',
                             style: TextStyle(
                               color: Colors.teal,
@@ -717,7 +717,7 @@ class _RegisterPageState extends State<RegisterPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+            child:  Text('OK'),
           ),
         ],
       ),

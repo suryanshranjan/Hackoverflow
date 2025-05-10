@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 10),
 
                   // Welcome Text
-                  const Center(
+                   Center(
                     child: Text(
                       'Welcome',
                       style: TextStyle(
@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 40),
 
                   // Sign In Text
-                  const Text(
+                   Text(
                     'Sign In',
                     style: TextStyle(
                       fontSize: 24,
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 8),
 
                   // Description Text
-                  const Text(
+                   Text(
                     "Welcome back! Enter your details to access your account.",
                     style: TextStyle(
                       fontSize: 14,
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 30),
 
                   // Email Label
-                  const Text(
+                   Text(
                     'Email',
                     style: TextStyle(
                       fontSize: 16,
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
 
                   // Password Label
-                  const Text(
+                   Text(
                     'Password',
                     style: TextStyle(
                       fontSize: 16,
@@ -213,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                         minimumSize: const Size(50, 30),
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
-                      child: const Text(
+                      child:  Text(
                         'Forget Password',
                         style: TextStyle(
                           color: Colors.grey,
@@ -248,7 +248,7 @@ class _LoginPageState extends State<LoginPage> {
                                 strokeWidth: 2,
                               ),
                             )
-                          : const Text(
+                          :  Text(
                               'Sign in',
                               style: TextStyle(
                                 fontSize: 16,
@@ -328,7 +328,7 @@ class _LoginPageState extends State<LoginPage> {
                             minimumSize: const Size(50, 30),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
-                          child: const Text(
+                          child:  Text(
                             'Sign Up',
                             style: TextStyle(
                               color: Colors.blue,
@@ -482,7 +482,7 @@ class _LoginPageState extends State<LoginPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
+            child:  Text('OK'),
           ),
         ],
       ),

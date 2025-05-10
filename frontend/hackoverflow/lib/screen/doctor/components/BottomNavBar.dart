@@ -14,20 +14,38 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
+      backgroundColor: Colors.white,
+      elevation: 0,
+      selectedFontSize: 12,
+      unselectedFontSize: 11,
+      selectedItemColor: Colors.blue,
+      unselectedItemColor: Colors.grey,
+      showUnselectedLabels: true,
+      iconSize: 24,
+      currentIndex: currentIndex,
+      onTap: onTap,
       items: const [
         BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today), label: 'Appointments'),
+          icon: Icon(Icons.calendar_today_outlined),
+          label: 'Appointments',
+        ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.access_time), label: 'Requests'),
-        BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Patients'),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          icon: Icon(Icons.access_time_outlined),
+          label: 'Requests',
+        ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.notifications), label: 'Notifications'),
+          icon: Icon(Icons.people_outline),
+          label: 'Patients',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_outline),
+          label: 'Profile',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.notifications_none),
+          label: 'Alerts',
+        ),
       ],
-      currentIndex: currentIndex,
-      selectedItemColor: Colors.teal[600],
-      unselectedItemColor: Colors.grey,
-      onTap: onTap,
     );
   }
 }
