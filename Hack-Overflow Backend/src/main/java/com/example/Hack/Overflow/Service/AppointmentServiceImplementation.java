@@ -1,33 +1,53 @@
 package com.example.Hack.Overflow.Service;
 
 import com.example.Hack.Overflow.Model.Appointment;
+import com.example.Hack.Overflow.Model.Doctor;
+import com.example.Hack.Overflow.Model.User;
+import com.example.Hack.Overflow.Repo.Appointmentrepo;
+import com.example.Hack.Overflow.Repo.UserRepository;
+import com.example.Hack.Overflow.Request.AppointmentRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentServiceImplementation implements AppointmentService{
+@Autowired
+private Appointmentrepo appointrepo;
+@Autowired
+private UserRepository userrepo;
+
 
     @Override
-    public String createAppointment(Appointment appointment) {
-        return "";
+    public Appointment createAppointment(AppointmentRequest appointment) {
+        return null;
     }
 
     @Override
-    public String Cancel(Appointment appointment) {
-        return "";
+    public void Cancel(Long id) {
+
+        appointrepo.deleteById(id);
     }
 
     @Override
-    public String getAppointmentByPatientandDoctor(Appointment appointment) {
-        return "";
+    public List<Appointment> getAppointmentByPatientandDoctor(Long patientId, Long DoctorId) {
+        List<Appointment>ss=appointrepo.findByPatientIdAndDoctorId(patientId,DoctorId);
+        return ss;
+    }
+
+
+    @Override
+    public List<Appointment> getAppointmentByPatient(Long DoctorId) {
+
+List<Appointment>ss=appointrepo.findByPatientId(DoctorId);
+        return ss;
     }
 
     @Override
-    public String getAppointmentByPatient(Long DoctorId) {
-        return "";
-    }
-
-    @Override
-    public String getAppointmentByDoctor(Long PatientId) {
-        return "";
+    public List<Appointment> getAppointmentByDoctor(Long PatientId) {
+        List<Appointment>ss=appointrepo.findByDoctorId(PatientId);
+   return ss;
     }
 }

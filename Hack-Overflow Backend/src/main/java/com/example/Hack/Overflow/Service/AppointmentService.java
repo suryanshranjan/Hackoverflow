@@ -1,14 +1,17 @@
 package com.example.Hack.Overflow.Service;
 
 import com.example.Hack.Overflow.Model.Appointment;
+import com.example.Hack.Overflow.Request.AppointmentRequest;
+
+import java.util.List;
 
 public interface AppointmentService{
 
-    String createAppointment(Appointment appointment);
-    String Cancel(Appointment appointment);
-    String getAppointmentByPatientandDoctor(Appointment appointment);
+    Appointment createAppointment(AppointmentRequest appointment);
+  void Cancel(Long id);
+    List<Appointment> getAppointmentByPatientandDoctor(Long patientId,Long DoctorId);
 
-    String getAppointmentByPatient(Long DoctorId);
-    String getAppointmentByDoctor(Long PatientId);
+    List<Appointment> getAppointmentByPatient(Long PatientId);
+    List<Appointment> getAppointmentByDoctor(Long DoctorId);
 
 }

@@ -1,6 +1,7 @@
 package com.example.Hack.Overflow.Controller;
 
 import com.example.Hack.Overflow.Model.Appointment;
+import com.example.Hack.Overflow.Request.AppointmentRequest;
 import com.example.Hack.Overflow.Service.AppointmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class AppointmentController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> create(@RequestBody Appointment appointment) {
+    public ResponseEntity<Appointment> create(@RequestBody AppointmentRequest appointment) {
         return ResponseEntity.ok(appointmentService.createAppointment(appointment));
     }
 }
