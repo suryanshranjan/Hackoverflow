@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,47 +18,15 @@ class ProfilePage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              // Profile Header Section
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundImage: AssetImage('assets/doctor.webp'),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Dr. Harshit Masiwal',
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Doctor | Specialist in Cardiology',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              _buildHeader(),
               const Divider(thickness: 1, color: Colors.grey),
-
-              // Menu Items
-              _buildMenuItem(Icons.history, 'History'),
-              _buildMenuItem(Icons.person_outline, 'Personal Details'),
-              _buildMenuItem(Icons.location_on_outlined, 'Location'),
-              _buildMenuItem(Icons.payment_outlined, 'Payment Method'),
-              _buildMenuItem(Icons.settings_outlined, 'Settings'),
-              _buildMenuItem(Icons.help_outline, 'Help'),
-
-              // Logout Button
+              _buildMenuItem(Icons.history, 'History', () {}),
+              _buildMenuItem(Icons.person_outline, 'Personal Details', () {}),
+              _buildMenuItem(Icons.location_on_outlined, 'Set Location',
+                  _handleLocationTap),
+              _buildMenuItem(Icons.payment_outlined, 'Payment Method', () {}),
+              _buildMenuItem(Icons.settings_outlined, 'Settings', () {}),
+              _buildMenuItem(Icons.help_outline, 'Help', () {}),
               const Divider(thickness: 1, color: Colors.grey),
               ListTile(
                 leading: const Icon(Icons.logout, color: Colors.red),
@@ -61,7 +38,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  // Add logout functionality here
+                  // TODO: Add logout functionality
                 },
               ),
             ],
@@ -71,30 +48,91 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  // Helper method to build menu items
-  Widget _buildMenuItem(IconData icon, String title) {
+  Widget _buildHeader() {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      alignment: Alignment.center,
+      child: Column(
+        children: [
+          const CircleAvatar(
+            radius: 60,
+            backgroundImage: AssetImage('assets/doctor.webp'),
+          ),
+          const SizedBox(height: 12),
+          const Text(
+            'Dr. Harshit Masiwal',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Doctor | Specialist in Cardiology',
+            style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuItem(IconData icon, String title, VoidCallback onTap) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: ListTile(
-        leading: Icon(
-          icon,
-          color: const Color(0xFF6D9EEB), // Icon color
-        ),
+        leading: Icon(icon, color: const Color(0xFF6D9EEB)),
         title: Text(
           title,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Colors.black87,
-          ),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
-        trailing: const Icon(
-          Icons.chevron_right,
-          color: Colors.grey,
-        ),
-        onTap: () {
-          // Add navigation functionality here
-        },
+        trailing: const Icon(Icons.chevron_right, color: Colors.grey),
+        onTap: onTap,
+      ),
+    );
+  }
+
+  Future<void> _handleLocationTap() async {
+    try {
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        return _showDialog("Location services are disabled.");
+      }
+
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          return _showDialog("Location permission denied.");
+        }
+      }
+
+      if (permission == LocationPermission.deniedForever) {
+        return _showDialog("Location permissions are permanently denied.");
+      }
+
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setDouble('latitude', position.latitude);
+      await prefs.setDouble('longitude', position.longitude);
+
+      _showDialog(
+          "Latitude: ${position.latitude}\nLongitude: ${position.longitude}");
+    } catch (e) {
+      _showDialog("Error: ${e.toString()}");
+    }
+  }
+
+  void _showDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('Location Info'),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          )
+        ],
       ),
     );
   }
