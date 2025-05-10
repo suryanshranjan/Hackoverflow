@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackoverflow/screen/patient/paitenthomepage.dart';
 import 'splashscreen.dart'; // Import your splash screen
 // Make sure to create these files with the code we've already written
 // import 'roleselectionscreen.dart';
@@ -37,38 +38,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // Start with the splash screen, which will handle navigation to role selection
-      home: const SplashScreen(),
+      home: PatientHomePage(),
     );
   }
 }
-
-// The following is for reference to show how the screens connect together
-// You should have separate files for these classes rather than including them here
-
-/*
-// In splashscreen.dart, make sure to update the navigation:
-Future.delayed(const Duration(seconds: 6), () {
-  if (mounted) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const RoleSelectionScreen(),
-      ),
-    );
-  }
-});
-
-// In roleselectionscreen.dart, your navigation methods should point to actual screens:
-// For Doctor role:
-Navigator.of(context).push(
-  MaterialPageRoute(
-    builder: (context) => const DoctorDashboard(),
-  ),
-);
-
-// For Patient role:
-Navigator.of(context).push(
-  MaterialPageRoute(
-    builder: (context) => const PatientDashboard(),
-  ),
-);
-*/
