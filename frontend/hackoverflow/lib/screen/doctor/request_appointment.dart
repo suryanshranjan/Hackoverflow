@@ -58,9 +58,9 @@ class RequestAppointmentPage extends StatelessWidget {
                 Text(
                   'Incoming Appointment Requests',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: Colors.teal,
                   ),
                 ),
                 const SizedBox(height: 16),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hackoverflow/screen/doctor/Alerts.dart';
+import 'package:hackoverflow/screen/doctor/PastAppointmentsPage.dart';
 import 'package:hackoverflow/screen/doctor/request_appointment.dart';
 import './components/AppointmentCard.dart';
 import './components/ProfileGreeting.dart';
@@ -55,32 +57,34 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
       child: Column(
         children: const [
           AppointmentCard(
-            name: 'John Doe',
-            specialty: 'Cardiology',
-            time: 'Today, 2:00 PM',
+            patientName: 'John Doe',
+            age: 28,
+            gender: 'Male',
+            symptoms: 'Fever, Headache, Cough',
+            time: 'March 12, 2023 - 10:30 AM',
             profileImage: 'assets/doctor.webp',
           ),
-          SizedBox(height: 12),
           AppointmentCard(
-            name: 'Jane Smith',
-            specialty: 'Dermatology',
-            time: 'Tomorrow, 11:00 AM',
+            patientName: 'John Doe',
+            age: 28,
+            gender: 'Male',
+            symptoms: 'Fever, Headache, Cough',
+            time: 'March 12, 2023 - 10:30 AM',
             profileImage: 'assets/doctor.webp',
           ),
-          SizedBox(height: 12),
           AppointmentCard(
-            name: 'Bob Johnson',
-            specialty: 'Neurology',
-            time: 'Tomorrow, 4:00 PM',
+            patientName: 'John Doe',
+            age: 28,
+            gender: 'Male',
+            symptoms: 'Fever, Headache, Cough',
+            time: 'March 12, 2023 - 10:30 AM',
             profileImage: 'assets/doctor.webp',
-          ),
+          )
         ],
       ),
     );
   }
 
-  // Body of the Doctor Dashboard, changing based on selected index
-  // Body of the Doctor Dashboard, changing based on selected index
   Widget _buildBody() {
     switch (_selectedIndex) {
       case 0:
@@ -97,12 +101,9 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
                 child: Text(
                   'Upcoming Appointments',
                   style: TextStyle(
-                    fontSize: 20, // Slightly larger for emphasis
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                    letterSpacing:
-                        1, // Adds a bit of spacing between the letters
-                    height: 1.4, // Adjust line height for better spacing
+                    color: Colors.teal,
                   ),
                 ),
               ),
@@ -113,11 +114,11 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
       case 1:
         return RequestAppointmentPage();
       case 2:
-        return Center(child: Text("Patients screen coming soon..."));
+        return PastAppointmentsPage();
       case 3:
         return ProfilePage();
       case 4:
-        return Center(child: Text("Notifications screen coming soon..."));
+        return NotificationsPage();
       default:
         return const SizedBox();
     }
