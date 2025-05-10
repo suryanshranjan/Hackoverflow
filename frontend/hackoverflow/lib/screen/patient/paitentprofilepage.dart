@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hackoverflow/auth/login.dart';
 import 'package:hackoverflow/auth/logout.dart';
 import 'package:hackoverflow/screen/patient/component/paitentnavbar';
 import 'package:hackoverflow/screen/patient/paitentappoiment.dart';

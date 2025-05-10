@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackoverflow/screen/doctor/doctor_dashboard.dart';
 import 'package:hackoverflow/screen/patient/paitenthomepage.dart';
 import 'splashscreen.dart'; // Import your splash screen
 // Make sure to create these files with the code we've already written
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // Start with the splash screen, which will handle navigation to role selection
-      home: SplashScreen(),
+      home: DoctorDashboard(),
     );
   }
 }
