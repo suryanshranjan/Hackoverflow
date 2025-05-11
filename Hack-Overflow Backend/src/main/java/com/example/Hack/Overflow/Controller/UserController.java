@@ -39,4 +39,5 @@ public class UserController {
         user.get().setPassword(null);
         return new ResponseEntity<>(user.get(), HttpStatus.ACCEPTED);
     }
+
 }

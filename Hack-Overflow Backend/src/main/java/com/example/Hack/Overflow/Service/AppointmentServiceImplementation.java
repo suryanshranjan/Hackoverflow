@@ -11,17 +11,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Transactional
 @Service
-public class AppointmentServiceImplementation implements AppointmentService{
-@Autowired
-private Appointmentrepo appointrepo;
-@Autowired
-private UserRepository userrepo;
+public class AppointmentServiceImplementation implements AppointmentService {
+    @Autowired
+    private Appointmentrepo appointrepo;
+    @Autowired
+    private UserRepository userrepo;
 
-@Override
+    @Override
     public Appointment createAppointment(AppointmentRequest appointment) {
 
         Optional<User> patient = userrepo.findById(appointment.getPatientId());
@@ -34,14 +35,12 @@ private UserRepository userrepo;
             throw new RuntimeException("Doctor not found with ID: " + appointment.getDoctorId());
         }
 
-               Appointment appoint = new Appointment();
+        Appointment appoint = new Appointment();
         appoint.setPatient(patient.get());
         appoint.setDoctor(doctor.get());
         appoint.setEndTime(appointment.getEndTime());
         appoint.setStartTime(appointment.getStartTime());
         appoint.setStatus(true);
-
-
         appointrepo.save(appoint);
 
         return appoint;
@@ -56,7 +55,7 @@ private UserRepository userrepo;
 
     @Override
     public List<Appointment> getAppointmentByPatientandDoctor(Long patientId, Long DoctorId) {
-        List<Appointment>ss=appointrepo.findByPatient_IdAndDoctor_Id(patientId,DoctorId);
+        List<Appointment> ss = appointrepo.findByPatient_IdAndDoctor_Id(patientId, DoctorId);
         return ss;
     }
 
@@ -64,17 +63,60 @@ private UserRepository userrepo;
     @Override
     public List<Appointment> getAppointmentByPatient(Long DoctorId) {
 
-List<Appointment>ss=appointrepo.findByPatient_Id(DoctorId);
+        List<Appointment> ss = appointrepo.findByPatient_Id(DoctorId);
         return ss;
     }
 
     @Override
     public List<Appointment> getAppointmentByDoctor(Long PatientId) {
-        List<Appointment>ss=appointrepo.findByDoctor_Id(PatientId);
-   return ss;
+        List<Appointment> ss = appointrepo.findByDoctor_Id(PatientId);
+        return ss;
     }
+
+  @Override
+    public List<Appointment> getPendingAppointment() {
+        List<Appointment> ss = appointrepo.findAll();
+        List<Appointment> pendng = new ArrayList<>();
+        for (Appointment s : ss) {
+            if (s.isStatus()) {
+                pendng.add(s);
+            }
+        }
+        return pendng;
+    }
+
+   @Override
+    public void CompleteThisAppointment(Appointment appoint) {
+        appoint.setStatus(!appoint.isStatus());
+        appointrepo.save(appoint);
+    }
+
+    @Override
+    public Appointment getById(long id) {
+        Optional<Appointment> appoint= appointrepo.findById(id);
+        if(appoint.get()!=null){
+            return appoint.get();
+        }
+        return null;
+    }
+
+
+  @Override
+    public List<Appointment> CompletedAppointment() {
+
+        List<Appointment> ss = appointrepo.findAll();
+        List<Appointment> completed = new ArrayList<>();
+        for (Appointment s : ss) {
+            System.out.println(s.isStatus());
+            if (!s.isStatus()) {
+                completed.add(s);
+            }
+        }
+        return completed;
+    }
+
     public List<TimeSlot> findDoctorConflicts(Long doctorId, LocalDateTime newStart, LocalDateTime newEnd) {
-        // Query appointments of the doctor within the given time range
+
         return appointrepo.findByDoctor_IdAndStartTimeBetween(doctorId, newStart, newEnd);
     }
 

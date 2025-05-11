@@ -2,6 +2,7 @@ package com.example.Hack.Overflow.Model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.time.LocalDateTime;
 @Data
@@ -21,7 +22,9 @@ public class Appointment {
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+
     private boolean Status;
+
 
 
 }

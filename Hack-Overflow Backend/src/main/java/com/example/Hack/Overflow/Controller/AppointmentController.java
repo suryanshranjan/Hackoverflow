@@ -72,5 +72,25 @@ public class AppointmentController {
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
+
     }
+
+    @GetMapping("/pending")
+    public ResponseEntity<List<Appointment>> getPendingAppointments() {
+        return ResponseEntity.ok(appointmentService.getPendingAppointment());
+    }
+
+
+    @GetMapping("/completed")
+    public ResponseEntity<List<Appointment>> getCompletedAppointments() {
+        return ResponseEntity.ok(appointmentService.CompletedAppointment());
+    }
+
+
+    @PostMapping("/complete/{id}")
+    public void completeAppointment(@PathVariable long id) {
+        Appointment appointment=appointmentService.getById(id);
+        appointmentService.CompleteThisAppointment(appointment);
+    }
+
 }

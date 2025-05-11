@@ -20,6 +20,7 @@ public class Clinic {
     private String Speciality;
     private String Opening;
     private String Closing;
+    private Double Distance;
     private Duration slotLength;
     @ManyToOne
     private User doctor;
