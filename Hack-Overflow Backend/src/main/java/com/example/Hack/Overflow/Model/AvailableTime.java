@@ -1,9 +1,10 @@
 package com.example.Hack.Overflow.Model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
-
+@Data
 @Entity
 public class AvailableTime {
 
@@ -14,6 +15,6 @@ private LocalDateTime startTime;
 private LocalDateTime endTime;
 
 @ManyToOne
-private Doctor doctor;
+private Clinic doctor;
 
 }

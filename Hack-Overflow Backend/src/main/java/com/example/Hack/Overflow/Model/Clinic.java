@@ -5,18 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Doctor {
+public class Clinic {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
-    private String FullName;
+    private String ClinicName;
     private String Email;
-    private String Password;
     private String Speciality;
+    private String Opening;
+    private String Closing;
+    private Duration slotLength;
+    @ManyToOne
+    private User doctor;
     @Embedded
     private Address address;
 }

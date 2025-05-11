@@ -10,13 +10,17 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id")
     private User doctor;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "patient_id", referencedColumnName = "id")
     private User patient;
 
+
     private LocalDateTime startTime;
-    private LocalDateTime EndTime;
+    private LocalDateTime endTime;
     private boolean Status;
 
 

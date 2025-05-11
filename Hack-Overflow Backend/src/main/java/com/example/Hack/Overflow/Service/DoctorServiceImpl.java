@@ -1,6 +1,6 @@
 package com.example.Hack.Overflow.Service;
 
-import com.example.Hack.Overflow.Model.Doctor;
+import com.example.Hack.Overflow.Model.Clinic;
 import com.example.Hack.Overflow.Model.Patient;
 import org.springframework.stereotype.Service;
 
@@ -8,17 +8,17 @@ import java.util.List;
 @Service
 public class DoctorServiceImpl implements DoctorService{
     @Override
-    public Doctor createDoctor(Doctor doctor) {
+    public Clinic createDoctor(Clinic doctor) {
         return null;
     }
 
     @Override
-    public Doctor status(Long doctorId) {
+    public Clinic status(Long doctorId) {
         return null;
     }
 
     @Override
-    public Doctor deleteDoctor(Doctor doctor) {
+    public Clinic deleteDoctor(Clinic doctor) {
         return null;
     }
 
