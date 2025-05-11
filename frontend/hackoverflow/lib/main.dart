@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackoverflow/auth/Clinic.dart';
 import 'package:hackoverflow/screen/doctor/doctor_dashboard.dart';
 import 'package:hackoverflow/screen/patient/paitenthomepage.dart';
 import 'splashscreen.dart'; // Import your splash screen
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // Start with the splash screen, which will handle navigation to role selection
-      home: DoctorDashboard(),
+      home: ClinicFormPage(),
     );
   }
 }
