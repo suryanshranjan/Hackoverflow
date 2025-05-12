@@ -67,10 +67,7 @@ public class AppConfig {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg = new CorsConfiguration();
-                cfg.setAllowedOriginPatterns(Arrays.asList(
-                    "http://localhost:5173"
-
-                ));
+                cfg.setAllowedOriginPatterns(Arrays.asList("*"));
                 cfg.setAllowedMethods(Collections.singletonList("*"));
                 cfg.setAllowCredentials(true);
                 cfg.setAllowedHeaders(Collections.singletonList("*"));
